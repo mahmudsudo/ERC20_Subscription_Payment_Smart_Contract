@@ -1,66 +1,20 @@
-## Foundry
+# ERC20 Subscription Payment Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains a Solidity smart contract for handling subscription-based payments using an ERC20 token. The contract allows users to subscribe to a service, manage their subscriptions, and automate recurring payments.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Subscription Management**: Users can create and cancel subscriptions.
+- **Automated Payments**: Allows for recurring payments at specified intervals.
+- **ERC20 Token Integration**: Supports payments using any ERC20 token.
+- **Event Logging**: Logs subscription creation, cancellation, and payment execution events.
 
-## Documentation
+## Contract Overview
 
-https://book.getfoundry.sh/
+The main contract `SubscriptionPayment` is designed to handle recurring payments in a decentralized manner. Below are the key functionalities:
 
-## Usage
+- `subscribe(uint256 _amount, uint256 _interval)`: Allows users to create a new subscription by specifying the payment amount and interval.
+- `cancelSubscription()`: Allows users to cancel their existing subscription.
+- `executePayment(address _subscriber)`: Executes the payment for the given subscriber if the payment is due.
+- `getNextPaymentDue(address _subscriber)`: Returns the next payment due timestamp for a given subscriber.
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
